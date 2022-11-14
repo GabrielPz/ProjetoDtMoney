@@ -1,0 +1,20 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "description": "Mensalidade" ,
+            "type": "income",
+            "category": "recebimento",
+            "price": 800,
+            "createdAt": "2022-11-13T19:46:46.387Z"
+        },
+        {
+            "id": 2,
+            "description": "Aluguel" ,
+            "type": "outcome",
+            "category": "pagamento",
+            "price": 200,
+            "createdAt": "2022-11-13T19:36:46.387Z"
+        }
+    ]
+}
