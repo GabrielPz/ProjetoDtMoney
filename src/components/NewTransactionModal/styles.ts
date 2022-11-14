@@ -2,7 +2,6 @@ import styled from "styled-components";
 import * as Dialog from '@radix-ui/react-dialog';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
-
 export const Overlay = styled(Dialog.Overlay)`
   position: fixed;
   width: 100vw;
@@ -20,7 +19,6 @@ export const Content = styled(Dialog.Content)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: ${props => props.theme["gray-300"]};
   form {
     margin-top: 2rem;
     display: flex;
@@ -46,7 +44,11 @@ export const Content = styled(Dialog.Content)`
       border-radius: 6px;
       margin-top: 1.25rem;
       cursor: pointer;
-      &:hover {
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      &:not(:disabled):hover {
         background: ${props => props.theme["green-700"]};
         transition: background-color 0.2s;
       }
@@ -69,8 +71,12 @@ export const TransactionType = styled(RadioGroup.Root)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-top: 0.5rem
+  margin-top: 0.5rem;
 `;
+
+interface TransactionTypeButtonProps {
+  variant: 'income' | 'outcome';
+}
 
 export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButtonProps>`
   background: ${props => props.theme["gray-700"]};
@@ -83,27 +89,18 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
   cursor: pointer;
   border: 0;
   color: ${props => props.theme["gray-300"]};
-
-  svg{
-    color: ${props => props.variant == 'income'? props.theme["green-300"]: props.theme["red-300"]};
-  };
-
-  &[data-state='checked']{
+  svg {
+    color: ${props => props.variant === 'income' ? props.theme["green-300"] : props.theme["red-300"]};
+  }
+  &[data-state='unchecked']:hover {
+    transition: background-color 0.2s;
+    background: ${props => props.theme["gray-600"]};
+  }
+  &[data-state='checked'] {
     color: ${props => props.theme.white};
-    background: ${props => props.variant == 'income'? props.theme["green-500"]: props.theme["red-500"]};
-
-    svg{
-        color: ${props => props.theme.white};
-
-    };
-  };
-  &[data-state='unchecked']{
-    &:hover{
-        background: ${props => props.theme["gray-600"]};
+    background: ${props => props.variant === 'income' ? props.theme["green-500"] : props.theme["red-500"]};
+    svg {
+      color: ${props => props.theme.white};
     }
-  };
-
+  }
 `;
-interface TransactionTypeButtonProps{
-    variant: 'income' | 'outcome';
-}
