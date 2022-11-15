@@ -1,52 +1,5 @@
 {
   "transactions": [
-    {
-      "id": 1,
-      "description": "Mensalidade",
-      "type": "income",
-      "category": "recebimento",
-      "price": 800,
-      "createdAt": "2022-11-13T19:46:46.387Z"
-    },
-    {
-      "id": 2,
-      "description": "Aluguel",
-      "type": "outcome",
-      "category": "pagamento",
-      "price": 200,
-      "createdAt": "2022-11-13T19:36:46.387Z"
-    },
-    {
-      "id": 3,
-      "description": "Aluguel2",
-      "type": "outcome",
-      "category": "pagamento",
-      "price": 200,
-      "createdAt": "2022-11-13T19:36:46.387Z"
-    },
-    {
-      "description": "Aluguel2",
-      "type": "outcome",
-      "category": "pagamento",
-      "price": 200,
-      "createdAt": "2022-11-13T19:36:46.387Z",
-      "id": 4
-    },
-    {
-      "category": "asdasdas",
-      "description": "adasd",
-      "price": 123123,
-      "type": "outcome",
-      "createdAt": "2022-11-14T19:36:46.387Z",
-      "id": 5
-    },
-    {
-      "category": "asdasd",
-      "description": "asdasd",
-      "price": 3424234,
-      "type": "income",
-      "createdAt": "2022-11-15T00:28:53.481Z",
-      "id": 6
-    }
+    
   ]
 }
