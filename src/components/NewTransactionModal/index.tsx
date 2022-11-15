@@ -3,6 +3,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
 import { Controller, useForm } from 'react-hook-form';
 import * as z from 'zod';
+import { api } from '../../lib/axios';
+import { dateFormatter, priceFormatter } from "../../utils/formatter";
 
 import { CloseButton, Content, Overlay, TransactionType, TransactionTypeButton } from './styles';
 
@@ -20,15 +22,26 @@ export function NewTransactionModal() {
     control,
     register,
     handleSubmit,
-    formState: { isSubmitting }
+    formState: { isSubmitting },
+    reset,
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
   })
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    await new Promise(resolve => setTimeout(resolve, 2000));
 
-    console.log(data);
+    const{category,description,price,type } = data;
+
+    await api.post('transactions',{
+      category,
+      description,
+      price,
+      type,
+      createdAt: new Date(),
+    })
+    
+    reset();
+
   }
 
   return (
